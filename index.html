@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main>
+        <section class="pokedex-search">
+            <div class="pokedex-search__bar">
+                <input class="input-findbyid" type="text">
+                <button class="btn-findbyid">Find pokemon by ID</button>
+            </div>
+            <!-- <div class="pokedex-search__bar">
+                <input class="input-findbyname" type="text">
+                <button class="btn-findbyname">Find pokémon by Name</button>
+            </div> -->
+        </section>
+        <section class="pokedex">
+            <div class="pokedex__left-page">
+
+                <div class="pokedex__left-page-top">
+                    <span class="pokedex__big-btn-blue"></span>
+                    <span class="pokedex__btn-red"></span>
+                    <span class="pokedex__btn-yellow"></span>
+                    <span class="pokedex__btn-green"></span>
+                </div>
+                <div class="pokedex__left-page-middle">
+                    <div class="pokedex__img-container">
+
+                        <div class="pokedex__img-container-top">
+                            <div class="pokedex__dot-container">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                            
+                        <div class="pokedex__img-container-content">
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png" alt="">
+                            <h3>Pokemon</h3>
+                        </div>
+
+                        <div class="pokedex__img-container-bottom">
+                            <span class="pokedex__red-btn"></span>
+                            <div class="pokedex__bars">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="pokedex__left-page-bottom">
+                    <div class="pokedex__left-page-bottom-left">
+                        <span class="pokedex__black-btn"></span>
+                    </div>
+                    <div class="pokedex__left-page-bottom-middle">
+                        <span class="pokedex__green-btn"></span>
+                        <span class="pokedex__orange-btn"></span>
+                        <p class="pokedex__index">
+                            #35
+                        </p>
+                    </div>
+                    <div class="pokedex__controller">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pokedex__right-page">
+                <div class="pokedex__moves">
+                    <h3>Pokemon's moves</h3>
+                    <ul>
+                        <li>Move 1</li>
+                        <li>Move 2</li>
+                        <li>Move 3</li>
+                        <li>Move 4</li>
+                        <li>Move 5</li>
+                    </ul>
+                </div>
+                <div class="pokedex__previous-evolution">
+                    <h3>Previous evolution:</h3>
+                    <h4>Ivysaur</h4>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png" />
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

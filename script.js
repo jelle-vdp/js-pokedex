@@ -11,6 +11,7 @@ const pokedexMovesUl = document.querySelector(".pokedex__moves ul");
 const pokedexPreviousEvolutionContainer = document.querySelector(".pokedex__previous-evolution");
 const pokedexPreviousEvolutionNameEl = document.querySelector(".pokedex__previous-evolution h4");
 const pokedexPreviousEvolutionImgEl = document.querySelector(".pokedex__previous-evolution img");
+const pokedexIndexEl = document.querySelector(".pokedex__index")
 
 btnGetById.addEventListener("click", () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${inputPokemonId.value}/`)
@@ -22,6 +23,7 @@ btnGetById.addEventListener("click", () => {
             pokedexContainer.style.display = "flex";
             pokedexNameEl.innerText = pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1);
             pokedexImgEl.src = pokemonData.sprites.front_default;
+            pokedexIndexEl.innerText = `#${pokemonData.id}`; 
 
             pokedexMovesUl.innerHTML = "";
             for (let i = 0; i <5; i++){
@@ -44,7 +46,7 @@ btnGetById.addEventListener("click", () => {
                                 pokedexPreviousEvolutionContainer.style.display = "flex";
                                 pokedexPreviousEvolutionNameEl.innerText = previousEvolution.name.charAt(0).toUpperCase() + previousEvolution.name.slice(1);
                                 pokedexPreviousEvolutionImgEl.src = previousEvolution.sprites.front_default;
-                                
+
                             });
                         }
                 });

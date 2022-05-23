@@ -48,7 +48,9 @@ btnGetById.addEventListener("click", () => {
                                 pokedexPreviousEvolutionImgEl.src = previousEvolution.sprites.front_default;
 
                             });
-                        }
+                    } else {
+                        pokedexPreviousEvolutionContainer.style.display = "none";
+                    }
                 });
         });
 })

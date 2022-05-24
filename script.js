@@ -22,7 +22,7 @@ btnGetPokemon.addEventListener("click", () => {
     if (isNaN(+inputGetPokemon.value)){
         searchValue = inputGetPokemon.value.replaceAll(" ", "-").toLowerCase();
     } else {
-        searchValue = +inputGetPokemon.value
+        searchValue = inputGetPokemon.value
     }
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}/`)
@@ -63,7 +63,7 @@ btnGetPokemon.addEventListener("click", () => {
                 pokedexMovesUl.innerHTML = `${pokedexMovesUl.innerHTML}<li>${pokemonMove.charAt(0).toUpperCase() + pokemonMove.slice(1)}</li>`;
             }
 
-            fetch(`https://pokeapi.co/api/v2/pokemon-species/${inputGetPokemon.value}/`)
+            fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}/`)
                 .then(res => res.json())
                 .then(data => {
                     let familyData = data;

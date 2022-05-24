@@ -55,10 +55,6 @@ main .pokedex-search__bar {
   display: flex;
 }
 
-main .pokedex-search__bar:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
 main .pokedex-search__bar input, main .pokedex-search__bar button {
   padding: 0.5rem 0.8rem;
   border-radius: 5px;

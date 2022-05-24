@@ -1,5 +1,5 @@
 # Pokedex - AJAX fetch exercise
-Description: fetch exercise for the BeCode webdevelopment course. Data fetched from the [Pokéapi](https://pokeapi.co/)
+Description: fetch exercise for the BeCode webdevelopment course. Data fetched from the [Pokéapi](https://pokeapi.co/)<br>
 Link: https://jelle-vdp.github.io/pokedex/
 
 ## Practical Information

@@ -15,14 +15,17 @@
 <body>
     <main>
         <section class="pokedex-search">
-            <div class="pokedex-search__bar">
-                <input class="input-findbyid" type="text">
-                <button class="btn-findbyid">Find pokemon by ID</button>
+            <p class="pokedex-search__description">Search for a pokémon name or a pokémon ID</p>
+            <div class="pokedex-search__bar"> 
+                <input class="input-findpokemon" type="text">
+                <button class="btn-findpokemon">Find pokemon by ID</button>
             </div>
-            <!-- <div class="pokedex-search__bar">
-                <input class="input-findbyname" type="text">
-                <button class="btn-findbyname">Find pokémon by Name</button>
-            </div> -->
+            <p class="pokedex-search__error-id">
+                You gave in a wrong ID, make sure it's between 1 and 898 or between 10001 and 10228.
+            </p>
+            <p class="pokedex-search__error-name">
+                The name you entered isn't a pokémon, maybe you've made a spelling error?.
+            </p>
         </section>
         <section class="pokedex">
             <div class="pokedex__left-page">

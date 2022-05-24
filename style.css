@@ -42,6 +42,11 @@ main > section:not(:last-child) {
 main .pokedex-search {
   background-color: #0B3954;
   padding: 2rem;
+  border-radius: 1rem;
+}
+
+main .pokedex-search .pokedex-search__description {
+  margin-bottom: 1rem;
 }
 
 main .pokedex-search__bar {
@@ -75,6 +80,11 @@ main .pokedex-search__bar button:hover {
   background: #72a7d1;
 }
 
+main .pokedex-search .pokedex-search__error-id, main .pokedex-search .pokedex-search__error-name {
+  display: none;
+  margin-top: 1rem;
+}
+
 main .pokedex {
   display: none;
 }
@@ -90,6 +100,7 @@ main .pokedex__left-page {
   width: 50%;
   background-color: #dc0a2f;
   border-radius: 1rem;
+  border: 1px solid #242424;
 }
 
 main .pokedex__left-page-top {
@@ -383,6 +394,7 @@ main .pokedex__right-page {
   border-radius: 1rem;
   padding: 2rem 10%;
   gap: 3rem;
+  border: 1px solid #242424;
 }
 
 main .pokedex__right-page .pokedex__moves {

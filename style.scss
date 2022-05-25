@@ -335,9 +335,21 @@ main {
 
                     li {
                         padding-left:0.7rem;
+                        position: relative;
 
                         &:not(:last-child){
                             margin-bottom:0.3rem;
+                        }
+
+                        &.selected::before {
+                            content: ">";
+                            position: absolute;
+                            left:-5px;
+                            top:50%;
+                            transform: translateY(-50%);
+                            animation: blink-animation 1s steps(5, start) infinite;
+
+
                         }
                     }
                 }
@@ -352,10 +364,12 @@ main {
                 display:none;
                 flex-direction: column;
             }
-            
         }
-
-
     }
-    
+}
+
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
 }

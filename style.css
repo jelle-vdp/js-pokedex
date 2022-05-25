@@ -409,10 +409,22 @@ main .pokedex__right-page .pokedex__moves ul {
 
 main .pokedex__right-page .pokedex__moves ul li {
   padding-left: 0.7rem;
+  position: relative;
 }
 
 main .pokedex__right-page .pokedex__moves ul li:not(:last-child) {
   margin-bottom: 0.3rem;
+}
+
+main .pokedex__right-page .pokedex__moves ul li.selected::before {
+  content: ">";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+          animation: blink-animation 1s steps(5, start) infinite;
 }
 
 main .pokedex__right-page .pokedex__previous-evolution {
@@ -426,5 +438,17 @@ main .pokedex__right-page .pokedex__previous-evolution {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
 /*# sourceMappingURL=style.css.map */

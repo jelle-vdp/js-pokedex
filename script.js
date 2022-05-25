@@ -4,6 +4,7 @@ const inputGetPokemon = document.querySelector(".input-findpokemon");
 const pokedexContainer = document.querySelector(".pokedex");
 const pokedexNameEl = document.querySelector(".pokedex__img-container-content h3");
 const pokedexImgEl = document.querySelector(".pokedex__img-container-content img");
+const pokedexMovesTitle = document.querySelector(".pokedex__moves h3");
 const pokedexMovesUl = document.querySelector(".pokedex__moves ul");
 const pokedexPreviousEvolutionContainer = document.querySelector(".pokedex__previous-evolution");
 const pokedexPreviousEvolutionNameEl = document.querySelector(".pokedex__previous-evolution h4");
@@ -13,7 +14,7 @@ const pokedexIndexEl = document.querySelector(".pokedex__index");
 const idErrorEl = document.querySelector(".pokedex-search__error-id");
 const nameErrorEl = document.querySelector(".pokedex-search__error-name");
 
-// let count = 0
+let spriteInterval;
 
 btnGetPokemon.addEventListener("click", () => {
 
@@ -22,12 +23,14 @@ btnGetPokemon.addEventListener("click", () => {
     if (isNaN(+inputGetPokemon.value)){
         searchValue = inputGetPokemon.value.replaceAll(" ", "-").toLowerCase();
     } else {
-        searchValue = inputGetPokemon.value
+        searchValue = inputGetPokemon.value;
     }
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchValue}/`)
         .then(res => res.json())
         .then(data => {
+
+            clearInterval(spriteInterval);
             
             let pokemonData = data;
 
@@ -38,30 +41,77 @@ btnGetPokemon.addEventListener("click", () => {
             pokedexImgEl.src = pokemonData.sprites.front_default;
             pokedexIndexEl.innerText = `#${pokemonData.id}`; 
 
-            let currentPokemonSprites = [pokemonData.sprites.front_default, pokemonData.sprites.back_default, pokemonData.sprites.front_shiny, pokemonData.sprites.back_shiny, pokemonData.sprites.front_default];
-            
+            let currentPokemonSprites = [pokemonData.sprites.front_default, pokemonData.sprites.back_default, pokemonData.sprites.front_shiny, pokemonData.sprites.back_shiny];
 
-            const spriteMove = () => {
-                currentPokemonSprites.forEach((sprite, i) => {
-                setTimeout(() => pokedexImgEl.src = sprite, 1000 * i)
-                });
+            currentPokemonSprites.forEach((sprite, i) => {
+                let index = `sprite-${i + 1}`;
+                pokedexImgEl.dataset[index] = sprite;
+            });
+
+            let count = 0;
+            spriteInterval = setInterval(() => {
+                count++;
+                let index = `sprite-${count}`;
+                pokedexImgEl.src = pokedexImgEl.dataset[index];
+                if (count === 4){
+                    count = 0;
+                };
+
+            }, 1000);
+
+            if (pokemonData.moves.length === 1){
+                pokedexMovesTitle.innerText = "Your pokemon's move"
+            } else if (pokemonData.moves.length < 6) {
+                pokedexMovesTitle.innerText = `The ${pokemonData.moves.length} moves of your pokemon are`
             };
 
-            
-            // if (count > 0){
-            //     clearInterval(window.setInterval(spriteMove, 4000));
-            // }
-            // count++;
-
-            spriteMove();
-            // window.setInterval(spriteMove, 4000);
-
-
             pokedexMovesUl.innerHTML = "";
-            for (let i = 0; i <5; i++){
+            for (let i = 0; i < 5; i++){
                 let pokemonMove = pokemonData.moves[i].move.name.replaceAll("-", " ");
-                pokedexMovesUl.innerHTML = `${pokedexMovesUl.innerHTML}<li>${pokemonMove.charAt(0).toUpperCase() + pokemonMove.slice(1)}</li>`;
-            }
+                if (i === 0){
+                    pokedexMovesUl.innerHTML = `${pokedexMovesUl.innerHTML}<li class=\"selected\">${pokemonMove.charAt(0).toUpperCase() + pokemonMove.slice(1)}</li>`;
+                } else {
+                    pokedexMovesUl.innerHTML = `${pokedexMovesUl.innerHTML}<li>${pokemonMove.charAt(0).toUpperCase() + pokemonMove.slice(1)}</li>`;
+                };
+            };
+
+            movesArr = document.querySelectorAll(".pokedex__moves li");
+
+            document.addEventListener("keydown", e => {
+                if (e.keyCode === 38) {
+                    let indexSelectedMove;
+                    movesArr.forEach((move, index) => {
+                        if (move.classList.value === "selected"){
+                            indexSelectedMove = index;
+                        };
+                    });
+                    console.log(movesArr[indexSelectedMove]);
+                    movesArr[indexSelectedMove].classList.remove("selected");
+                    if (indexSelectedMove !== 0){
+                        indexSelectedMove--;
+                    } else {
+                        indexSelectedMove = movesArr.length - 1;
+                    }
+                    movesArr[indexSelectedMove].classList.add("selected");
+                    
+                } else if (e.keyCode === 40) {
+                    
+                    let indexSelectedMove;
+                    movesArr.forEach((move, index) => {
+                        if (move.classList.value === "selected"){
+                            indexSelectedMove = index;
+                        };
+                    });
+                    console.log(movesArr[indexSelectedMove]);
+                    movesArr[indexSelectedMove].classList.remove("selected");
+                    if (indexSelectedMove !== movesArr.length - 1){
+                        indexSelectedMove++;
+                    } else {
+                        indexSelectedMove = 0;
+                    }
+                    movesArr[indexSelectedMove].classList.add("selected");
+                };
+            });
 
             fetch(`https://pokeapi.co/api/v2/pokemon-species/${searchValue}/`)
                 .then(res => res.json())
@@ -83,7 +133,7 @@ btnGetPokemon.addEventListener("click", () => {
                             
                     } else {
                         pokedexPreviousEvolutionContainer.style.display = "none";
-                    }
+                    };
                 });
         })
         .catch(err => {
@@ -91,8 +141,8 @@ btnGetPokemon.addEventListener("click", () => {
                 nameErrorEl.style.display = "block";
                 setTimeout(() => nameErrorEl.style.display = "none", 5000);
             } else {
-                idErrorEl.style.display = "block"
+                idErrorEl.style.display = "block";
                 setTimeout(() => idErrorEl.style.display = "none", 5000);
-            }
+            };
         });
-})
+});

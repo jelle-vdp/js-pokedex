@@ -102,7 +102,6 @@ btnGetPokemon.addEventListener("click", () => {
                             indexSelectedMove = index;
                         };
                     });
-                    console.log(movesArr[indexSelectedMove]);
                     movesArr[indexSelectedMove].classList.remove("selected");
                     if (indexSelectedMove !== movesArr.length - 1){
                         indexSelectedMove++;
